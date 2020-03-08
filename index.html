@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="shortcut icon" href="/img/fav.png">
+		<meta name="author" content="johnescomp (Cybermonk_J)">
+		<meta name="description" content="A Job platform on a bloackchain">
+		<meta name="keywords" content="bloackchain,Jobs, Job store, aerternity, cv">
+
+        
+  
+    <title>ChainLinked</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="css/main.css" rel="stylesheet" media="all" />
+    <link rel="stylesheet" href="css/scrollbar.css" />
+    <link rel="stylesheet" href="css/workers.css" />
+    <link rel="stylesheet" href="css/loading.css" />
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/linearicons.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">				
+    <link rel="stylesheet" href="css/nice-select.css">							
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">	
+    <link rel="stylesheet" href="css/extra.css">	
+  </head>
+
+
+
+
+  <body>	
+    <header id="header">
+      <div class="container main-menu">
+        <div class="row align-items-center justify-content-between d-flex">
+          <div id="logo">
+            <a href="index.html"><img src="img/logo.png" alt="" title="ChainLinked" /></a>
+          </div>
+          
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active" id="homeLink">
+                  <a class="nav-link" href="#" id="homeLink">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" id="userLink">
+                  <a class="nav-link" href="#" id="chainlinkLink">Chains</a>
+                </li>
+                <li class="nav-item" id="registerLink">
+                  <a class="nav-link" href="#" id="registerLink">Register</a>
+                </li>
+                
+              </ul>
+            </div>
+          </nav>	    		
+        </div>
+      </div>
+    </header><!-- #header -->
+
+
+
+
+
+
+
+
+
+  <body>
+    <div id="scrollbar">
+
+
+      <div id="loadings">
+        <img src="loading.svg" />
+        <p>loading, PLease Wait</p>
+      </div>
+
+
+     
+
+
+
+
+      <div class="page-wrapper bg-dark p-t-100 p-b-50">
+        <div class="wrapper wrapper--w900">
+          <div class="card card-6">
+            <div class="card-heading" >
+              <h6 class="title">
+              #New
+              </h6>
+            </div>
+
+
+           
+
+
+            
+            <div class="card-body">
+              <div class="form-row">
+
+                  <hr style="color: blue;">
+
+
+                
+                  <div id="section">
+                    <h2>Hire Chains Here</h2>
+                    <p>Making the Neccesary connections</p>
+                    <p>Please Wait...</p>
+      
+       
+                    </div>
+                    <br>
+                    <br>
+                    <hr style="color: blue;">
+
+
+                    <div id="registerSection">
+                      <h2>Register To Be Hired</h2>
+                      <br>
+                      <br>
+      
+                      
+      
+                      <div class="container">
+                        <form>
+
+
+                        </form>
+                      </div>
+
+
+              
+                      <div class="name">Upload CV as Zip</div>
+                      <input type="file"  id="addedFile" style="border: solid 1px blue">
+                     
+                  <div class="card-footer">
+                    <button style="color: blue;" class="btn btn--radius-2 btn--blue-2" id="submitBtn">
+                      Upload
+                    </button>
+                  </div>
+                   
+
+                  </div>
+                    
+               
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+      
+
+
+  
+
+      
+
+      <script id="template" type="x-tmpl-mustache">
+         {{#UserArray}}
+         <hr style="color: blue;">
+         <div>
+            <link rel="stylesheet" href="../css/build.css" />
+
+            <div class="Box m-4">
+              <div class="Box-row Box-row--unread">
+                <div class="CircleBadge CircleBadge--small bg-grey float-left d-block mr-3 text-center">
+                  <h1 class="text-black text-center text-shadow-dark d-flex flex-justify-center height-full mt-1">{{randomLetter}}</h1>
+            </div>
+                <h4>{{work}}</h4>
+                <span></span><br/>
+                <span>
+                <label class="Label Label--gray mr-1"></label> <label class="Label Label--gray mr-1">{{name}}</label> <label class="Label Label--gray mr-1">{{work}}</label>
+               </span>
+              </div>
+              <div class="Box-row">
+            <ul class="lead ml-4 mb-0">
+              <li><b>
+                {{price }} aettos per month as</b> salary</li>
+          
+              Previous company : {{company}}</li>
+            <li>
+              <b>{{email}}</b> is My Email </li>
+            <li>
+              <li>
+                <b>{{phone}}</b> is My Phone Number </li>
+              <li>
+              <li>Hired : {{hired}} time(s)</li>
+              I can work {{hours}} hours everyday
+            <a href="https://ipfs.infura.io/{{hash}}">Click to download my CV</a>
+
+              </li></ul>
+              </div>
+              <div>
+                  <button class= " downloadCVButton btn-light submit-button"  id={{id}} >Download CV</button>
+              </div>
+              
+            </div>
+
+           
+            <div id = "hireBtn" >
+                <button class="btn btn-light hirebutton submit-button" type="button"
+                id={{id}}>Hire</button>
+            </div>
+           
+            
+         </div>
+         <hr style="color: blue;">
+       
+
+        {{/UserArray}}
+
+
+
+
+
+
+        <footer class="footer-area section-gap">
+
+          <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+            <div class="single-footer-widget">
+                <h4>Follow Aertstore</h4>
+                <p>Social Media Channels</p>
+                <div class="footer-social d-flex align-items-center">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                    <a href="#"><i class="fa fa-behance"></i></a>
+                </div>
+            </div>
+          <p class="footer-text"> Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | ChainLinked</p>
+                        
+        </footer>
+        <!-- End footer Area -->		
+
+
+
+      
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <script src="https://unpkg.com/ipfs-http-client@30.1.3/dist/index.js"></script>
+      <script src="https://bundle.run/buffer@5.2.1"></script>
+      <script src="https://unpkg.com/@aeternity/aepp-sdk/dist/aepp-sdk.browser-script.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
+      <script src="public/bundle.js"></script>
+			<script src="js/vendor/jquery-2.2.4.min.js"></script>
+			<script src="js/popper.min.js"></script>
+			<script src="js/vendor/bootstrap.min.js"></script>			
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>			
+  		<script src="js/easing.min.js"></script>			
+			<script src="js/hoverIntent.js"></script>
+			<script src="js/superfish.min.js"></script>	
+			<script src="js/jquery.ajaxchimp.min.js"></script>
+			<script src="js/jquery.magnific-popup.min.js"></script>	
+    	<script src="js/jquery.tabs.min.js"></script>						
+			<script src="js/jquery.nice-select.min.js"></script>	
+      <script src="js/isotope.pkgd.min.js"></script>			
+			<script src="js/waypoints.min.js"></script>
+			<script src="js/jquery.counterup.min.js"></script>
+			<script src="js/simple-skillbar.js"></script>							
+			<script src="js/owl.carousel.min.js"></script>							
+			<script src="js/mail-script.js"></script>	
+			<script src="js/main.js"></script>	
+    </div>
+  </body>
+</html>

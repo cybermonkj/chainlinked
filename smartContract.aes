@@ -1,0 +1,67 @@
+payable contract CvUpload =
+
+    type s = string
+    type a = address
+    type i = int
+
+    record chainee = {
+        price : i,
+        work : s,
+        hours : i,
+        company : s,
+        name : s,
+        email : s,
+        phone : i,
+
+
+        cv : s,
+        hired : int,
+        ownerAddress : a,
+        id : i}
+
+    record state = {
+        chainees : map(i,chainee),
+        userLength : i}
+ 
+    entrypoint init() = {chainees = {}, userLength = 0}
+
+    entrypoint userLength() = 
+        state.userLength
+
+    entrypoint getUserById(index : int)= 
+        state.chainees[index]
+        
+
+
+    stateful entrypoint register(newName:s, newEmail :s, newPrice :i, newWork :s, newHours : i, newCompany : s, newCv : s) = 
+        let newUser = {
+            name = newName,
+            work = newWork,
+            company = newCompany,
+            email = newEmail,
+            price = newPrice,
+            hours = newHours,
+            cv = newCv,
+            hired = 0,
+
+            id = userLength() + 1,
+            ownerAddress = Call.caller}
+        let index = userLength() +1
+
+        put(state{chainees[index] = newUser, userLength = index})
+
+        "New chainee Added to ChainLink"
+
+
+    stateful payable entrypoint hireUser(index : i) = 
+        let employeeAddress = getUserById(index).ownerAddress
+        require(Call.caller != employeeAddress, "Chain Error: You cannot Hire yourself;)")
+
+        // require(state.chainees[index].hired == false, "This worker has been hired by another company" )
+
+        let toBeHired = getUserById(index)
+        Chain.spend(toBeHired.ownerAddress, toBeHired.price)
+        let hired = state.chainees[index].hired +1
+
+        put(state{chainees[index].hired = hired })
+        "Hired successfully"
