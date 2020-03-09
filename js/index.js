@@ -1,27 +1,20 @@
 const contractSource = `
 
-payable contract CvUpload =
+payable contract Register =
 
-payable contract CvUpload =
-
-    type s = string
-    type a = address
-    type i = int
 
     record chainee = {
+        email : s,
+        phone : i,
+        cv : s,
+        hired : int,
+        ownerAddress : a,
+        id : i,
         price : i,
         work : s,
         hours : i,
         company : s,
-        name : s,
-        email : s,
-        phone : i,
-
-
-        cv : s,
-        hired : int,
-        ownerAddress : a,
-        id : i}
+        name : s}
 
     record state = {
         chainees : map(i,chainee),
@@ -37,17 +30,18 @@ payable contract CvUpload =
         
 
 
-    stateful entrypoint register(newName:s, newEmail :s, newPrice :i, newWork :s, newHours : i, newCompany : s, newCv : s) = 
+    stateful entrypoint register(newName:s, newEmail :s, newPrice :i, newWork :s, newHours : i, newCompany : s, newCv : s, newPhone : i) = 
         let newUser = {
-            name = newName,
-            work = newWork,
-            company = newCompany,
+        
             email = newEmail,
             price = newPrice,
             hours = newHours,
             cv = newCv,
             hired = 0,
-
+            name = newName,
+            phone = newPhone,
+            work = newWork,
+            company = newCompany,
             id = userLength() + 1,
             ownerAddress = Call.caller}
         let index = userLength() +1
@@ -60,21 +54,20 @@ payable contract CvUpload =
     stateful payable entrypoint hireUser(index : i) = 
         let employeeAddress = getUserById(index).ownerAddress
         require(Call.caller != employeeAddress, "Chain Error: You cannot Hire yourself;)")
-
-        // require(state.chainees[index].hired == false, "This worker has been hired by another company" )
-
         let toBeHired = getUserById(index)
         Chain.spend(toBeHired.ownerAddress, toBeHired.price)
         let hired = state.chainees[index].hired +1
-
         put(state{chainees[index].hired = hired })
-        "Hired successfully"
+        "Chainee was Hired successfully"
+        
 
-
+    type a = address
+    type i = int
+    type s = string
 
 `;
 
-const contractAddress = "ct_h9iy5fdMqqVhUK7Ncv5cJjrxEbz68b9E9NEzbgMz1JRr8W2hr";
+const contractAddress = "ct_2X3tyGXAoXBEYv52VBRoeKtYsAtMTu1Qu8B3UWDaHLoRLKmY2A;
 client = null;
 UserArray = [];
 

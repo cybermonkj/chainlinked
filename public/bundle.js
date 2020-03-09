@@ -2045,18 +2045,21 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 (function (Buffer){
 const contractSource = `
 
-payable contract CvUpload =
+payable contract Register =
 
-    type i = int
     type s = string
     type a = address
-    record user = {
-        name : s,
-        email : s,
+    type i = int
+
+    record chainee = {
         price : i,
         work : s,
         hours : i,
         company : s,
+        name : s,
+        email : s,
+        phone : i,
+
 
         cv : s,
         hired : int,
@@ -2064,22 +2067,23 @@ payable contract CvUpload =
         id : i}
 
     record state = {
-        users : map(i,user),
+        chainees : map(i,chainee),
         userLength : i}
  
-    entrypoint init() = {users = {}, userLength = 0}
+    entrypoint init() = {chainees = {}, userLength = 0}
 
     entrypoint userLength() = 
         state.userLength
 
     entrypoint getUserById(index : int)= 
-        state.users[index]
+        state.chainees[index]
         
 
 
-    stateful entrypoint register(newName:s, newEmail :s, newPrice :i, newWork :s, newHours : i, newCompany : s, newCv : s) = 
+    stateful entrypoint register(newName:s, newEmail :s, newPrice :i, newWork :s, newHours : i, newCompany : s, newCv : s, newPhone : i) = 
         let newUser = {
             name = newName,
+            phone = newPhone,
             work = newWork,
             company = newCompany,
             email = newEmail,
@@ -2092,29 +2096,25 @@ payable contract CvUpload =
             ownerAddress = Call.caller}
         let index = userLength() +1
 
-        put(state{users[index] = newUser, userLength = index})
+        put(state{chainees[index] = newUser, userLength = index})
 
-        "User has been added successfully"
+        "New chainee Added to ChainLink"
 
 
     stateful payable entrypoint hireUser(index : i) = 
         let employeeAddress = getUserById(index).ownerAddress
-        require(Call.caller != employeeAddress, "You cannot hire yourself;)")
-
-        // require(state.users[index].hired == false, "THis worker has been hired by another company" )
-
+        require(Call.caller != employeeAddress, "Chain Error: You cannot Hire yourself;)")
         let toBeHired = getUserById(index)
         Chain.spend(toBeHired.ownerAddress, toBeHired.price)
-        let hired = state.users[index].hired +1
-
-        put(state{users[index].hired = hired })
+        let hired = state.chainees[index].hired +1
+        put(state{chainees[index].hired = hired })
         "Hired successfully"
 
 
 
 `;
 
-const contractAddress = "ct_h9iy5fdMqqVhUK7Ncv5cJjrxEbz68b9E9NEzbgMz1JRr8W2hr";
+const contractAddress = "ct_2X3tyGXAoXBEYv52VBRoeKtYsAtMTu1Qu8B3UWDaHLoRLKmY2A";
 client = null;
 UserArray = [];
 
