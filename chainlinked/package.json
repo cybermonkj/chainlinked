@@ -1,0 +1,20 @@
+  
+{
+  "name": "chainlink",
+  "version": "1.0.0",
+  "description": "A Job application and hire system on aeternity blockchain",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "browserify js/index.js > public/bundle.js",
+    "serve": "http-server public -a 127.0.0.1 -p 8089",
+    "start": "npm run bundle && npm run serve"
+  },
+  "devDependencies": {
+    "browserify": "^16.2.3",
+    "concat-stream": "^2.0.0",
+    "execa": "^3.2.0",
+    "http-server": "~0.11.1"
+  },
+  "author": "Joshua Anop",
+  "license": "MIT"
+}

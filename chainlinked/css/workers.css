@@ -1,0 +1,21 @@
+.Box {
+    width: 90%;
+    
+  }
+  body {
+    font-family: Roboto !important;
+  }
+
+  .btn{
+
+    position: center;
+    color: crimson;
+    
+
+  }
+
+  #hireBtn{
+      position: center;
+      padding-left: 30%;
+
+  }
